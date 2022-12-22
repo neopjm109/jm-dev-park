@@ -1,5 +1,6 @@
 create database if not exists seoul_parking;
 
+-- 기초코드
 create table if not exists `base_code` (
     `code`          VARCHAR(8)  PRIMARY KEY,
     `created_at`    DATETIME    DEFAULT now(),
@@ -9,6 +10,29 @@ create table if not exists `base_code` (
     `data2`         TEXT,
     `data3`         TEXT,
     `data4`         TEXT
+);
+
+-- 사용자
+create table if not exists `user` (
+    `id`            INT         PRIMARY KEY     AUTO_INCREMENT,
+    `created_at`    DATETIME    DEFAULT now(),
+    `updated_at`    DATETIME,
+    `login_id`      TEXT,
+    `login_pwd`     TEXT,
+    `status`        VARCHAR(8)  COMMENT '기초코드. 상태',
+    `role`          VARCHAR(8)  COMMENT '기초코드. 유저/관리자',
+    `name`          TEXT
+);
+
+-- 사용자
+create table if not exists `reservation` (
+    `id`            VARCHAR(64) PRIMARY KEY,    -- uuid
+    `created_at`    DATETIME    DEFAULT now(),
+    `updated_at`    DATETIME,
+    `user_id`       INT,
+    `area_id`       INT,
+    `start_at`      DATETIME,
+    `end_at`        DATETIME
 );
 
 -- 구
@@ -24,7 +48,7 @@ create table if not exists `parking_area` (
     `id`            INT         PRIMARY KEY     AUTO_INCREMENT,
     `created_at`    DATETIME    DEFAULT now(),
     `updated_at`    DATETIME,
-    `districtId`    INT             NOT NULL,
+    `district_id`   INT             NOT NULL,
     `code`          VARCHAR(12)     NOT NULL,
     `name`          TEXT,
     `type`          VARCHAR(8)      COMMENT '기초코드. 주차타입. 공영,민영',
@@ -34,7 +58,7 @@ create table if not exists `parking_area` (
     `is_rotation`   TINYINT(1)      COMMENT '부제시행. 1:시행, 0:미시행',
     `is_pay`        TINYINT(1)      COMMENT '요금정보. 1:유료, 0:무료',
     `memo`          TEXT            COMMENT '특이사항',
-    `managementId`  INT             COMMENT '관리기관',
+    `management_id` INT             COMMENT '관리기관',
     `latitude`      DECIMAL(12, 8)  COMMENT '위도',
     `longitude`     DECIMAL(12, 8)  COMMENT '경도',
     'last_updated'  VARCHAR(10)     COMMENT '데이터 기준일자'
