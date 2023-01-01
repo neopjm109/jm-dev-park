@@ -32,6 +32,15 @@ create table if not exists `district` (
     `name`          TEXT
 );
 
+-- 관리기관
+create table if not exists `management` (
+    `id`            INT         PRIMARY KEY     AUTO_INCREMENT,
+    `created_at`    DATETIME    DEFAULT now(),
+    `updated_at`    DATETIME,
+    `name`          TEXT,
+    `tel`           TEXT        COMMENT '전화번호'
+);
+
 -- 주차장
 create table if not exists `parking_area` (
     `id`            INT             PRIMARY KEY     AUTO_INCREMENT,
@@ -55,7 +64,7 @@ create table if not exists `parking_area` (
 
 -- 주소
 create table if not exists `address` (
-    `areaId`        INT         PRIMARY KEY     COMMENT '주차장 ID',
+    `area_id`       INT         PRIMARY KEY     COMMENT '주차장 ID',
     `type`          VARCHAR(8)  PRIMARY KEY     COMMENT '기초코드. 주소 타입. 도로명, 지번',
     `created_at`    DATETIME    DEFAULT now(),
     `updated_at`    DATETIME,
@@ -64,13 +73,22 @@ create table if not exists `address` (
 
 -- 운영 시간
 create table if not exists `time_table` (
-    `areaId`        INT         PRIMARY KEY     COMMENT '주차장 ID',
+    `area_id`       INT         PRIMARY KEY     COMMENT '주차장 ID',
     `type`          VARCHAR(8)  PRIMARY KEY     COMMENT '기초코드. 타임테이블 타입. 평일,토요일,공휴일',
     `created_at`    DATETIME    DEFAULT now(),
     `updated_at`    DATETIME,
     `open_at`       VARCHAR(4)  COMMENT '운영 시작',
     `close_at`      VARCHAR(4)  COMMENT '운영 종료'
 );
+
+-- 결제 방법
+create table if not exists `pay_method` (
+    `area_id`       INT         PRIMARY KEY     COMMENT '주차장 ID',
+    `type`          VARCHAR(8)  PRIMARY KEY     COMMENT '기초코드. 결제 타입. 현금,카드,무통장,지로',
+    `created_at`    DATETIME    DEFAULT now(),
+    `updated_at`    DATETIME
+);
+
 
 -- 구매 이용권
 create table if not exists `ticket` (
@@ -92,21 +110,4 @@ create table if not exists `reservation` (
     `ticket_id`     INT,
     `start_at`      DATETIME,
     `end_at`        DATETIME
-);
-
--- 결제 방법
-create table if not exists `pay_method` (
-    `areaId`        INT         PRIMARY KEY     COMMENT '주차장 ID',
-    `type`          VARCHAR(8)  PRIMARY KEY     COMMENT '기초코드. 결제 타입. 현금,카드,무통장,지로',
-    `created_at`    DATETIME    DEFAULT now(),
-    `updated_at`    DATETIME
-);
-
--- 관리기관
-create table if not exists `management` (
-    `id`            INT         PRIMARY KEY     AUTO_INCREMENT,
-    `created_at`    DATETIME    DEFAULT now(),
-    `updated_at`    DATETIME,
-    `name`          TEXT,
-    `tel`           TEXT        COMMENT '전화번호'
 );
