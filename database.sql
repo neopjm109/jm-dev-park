@@ -14,7 +14,7 @@ create table if not exists `base_code` (
 
 -- 사용자
 create table if not exists `user` (
-    `id`            INT         PRIMARY KEY     AUTO_INCREMENT,
+    `id`            VARCHAR(64) PRIMARY KEY,    -- uuid,
     `created_at`    DATETIME    DEFAULT now(),
     `updated_at`    DATETIME,
     `login_id`      TEXT,
@@ -22,17 +22,6 @@ create table if not exists `user` (
     `status`        VARCHAR(8)  COMMENT '기초코드. 상태',
     `role`          VARCHAR(8)  COMMENT '기초코드. 유저/관리자',
     `name`          TEXT
-);
-
--- 사용자
-create table if not exists `reservation` (
-    `id`            VARCHAR(64) PRIMARY KEY,    -- uuid
-    `created_at`    DATETIME    DEFAULT now(),
-    `updated_at`    DATETIME,
-    `user_id`       INT,
-    `area_id`       INT,
-    `start_at`      DATETIME,
-    `end_at`        DATETIME
 );
 
 -- 구
@@ -45,8 +34,8 @@ create table if not exists `district` (
 
 -- 주차장
 create table if not exists `parking_area` (
-    `id`            INT         PRIMARY KEY     AUTO_INCREMENT,
-    `created_at`    DATETIME    DEFAULT now(),
+    `id`            INT             PRIMARY KEY     AUTO_INCREMENT,
+    `created_at`    DATETIME        DEFAULT now(),
     `updated_at`    DATETIME,
     `district_id`   INT             NOT NULL,
     `code`          VARCHAR(12)     NOT NULL,
@@ -83,14 +72,26 @@ create table if not exists `time_table` (
     `close_at`      VARCHAR(4)  COMMENT '운영 종료'
 );
 
--- 이용 금액
-create table if not exists `price` (
-    `areaId`        INT         PRIMARY KEY     COMMENT '주차장 ID',
-    `type`          VARCHAR(8)  PRIMARY KEY     COMMENT '기초코드. 요금 타입. 기본요금,추가시간,1일주차,월정기',
+-- 구매 이용권
+create table if not exists `ticket` (
+    `id`            VARCHAR(64) PRIMARY KEY,    -- uuid,
     `created_at`    DATETIME    DEFAULT now(),
     `updated_at`    DATETIME,
+    `area_id`       INT         COMMENT '주차장 ID',
+    `user_id`       VARCHAR(64) COMMENT '회원 ID',    -- uuid,
+    `type`          VARCHAR(8)  COMMENT '기초코드. 요금 타입. 기본요금,추가시간,1일주차,월정기',
     `minute`        INT         COMMENT '시간 단위. 단위:분',
     `price`         INT         COMMENT '요금 단위. 단위:원'
+);
+
+-- 예약
+create table if not exists `reservation` (
+    `id`            VARCHAR(64) PRIMARY KEY,    -- uuid
+    `created_at`    DATETIME    DEFAULT now(),
+    `updated_at`    DATETIME,
+    `ticket_id`     INT,
+    `start_at`      DATETIME,
+    `end_at`        DATETIME
 );
 
 -- 결제 방법
@@ -107,5 +108,5 @@ create table if not exists `management` (
     `created_at`    DATETIME    DEFAULT now(),
     `updated_at`    DATETIME,
     `name`          TEXT,
-    `tel`           TEXT            COMMENT '전화번호'
+    `tel`           TEXT        COMMENT '전화번호'
 );
