@@ -99,7 +99,11 @@ create table if not exists `ticket` (
     `user_id`       VARCHAR(64) COMMENT '회원 ID',    -- uuid,
     `type`          VARCHAR(8)  COMMENT '기초코드. 요금 타입. 기본요금,추가시간,1일주차,월정기',
     `minute`        INT         COMMENT '시간 단위. 단위:분',
-    `price`         INT         COMMENT '요금 단위. 단위:원'
+    `price`         INT         COMMENT '요금 단위. 단위:원',
+    `status`        VARCHAR(8)  COMMENT '기초코드. 상태',
+    `pay_method`    VARCHAR(8)  COMMENT '기초코드. 결제 타입. 현금,카드,무통장,지로',
+    `pay_date`      VARCHAR(14) COMMENT '결제일',
+    `card_number`   VARCHAR(16) COMMENT '카드 결제시, 카드 번호'
 );
 
 -- 예약
