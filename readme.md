@@ -11,4 +11,4 @@
 - web : www.jmpark.dev 소스 코드
 
 ## API 서버에 대해서
-- MariaDB를 이용하며 ORM방식을 기본으로 개발된다.
+- MariaDB를 이용하며 ORM,MVC 패턴으로 개발된다.
