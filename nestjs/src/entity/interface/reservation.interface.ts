@@ -1,4 +1,4 @@
-export interface Resrvation {
+export interface Reservation {
     id: string;
     createdAt: Date;
     updatedAt: Date;
