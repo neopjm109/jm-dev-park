@@ -1,11 +1,11 @@
-import { Entity, Column } from "typeorm";
+import { Entity, Column, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class PayMethod {    
-    @Column()
+    @PrimaryColumn()
     areaId: number;
     
-    @Column()
+    @PrimaryColumn()
     type: string;
     
     @Column()
