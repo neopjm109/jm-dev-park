@@ -4,7 +4,6 @@
 # Directory 설명
 - django : Python django API 프로젝트
 - nestjs : NestJS API 프로젝트
-- go-mvc : golang API 프로젝트
 - graphql-apollo : graphql 서버 프로젝트
 - spring-java : Spring Java API 프로젝트
 - spring-kotlin : Spring kotlin API 프로젝트
