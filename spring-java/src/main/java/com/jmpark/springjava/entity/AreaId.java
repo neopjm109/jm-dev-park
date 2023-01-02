@@ -6,6 +6,6 @@ import java.io.Serializable;
 
 @Getter
 public class AreaId implements Serializable {
-    String areaId;
+    Integer areaId;
     String type;
 }

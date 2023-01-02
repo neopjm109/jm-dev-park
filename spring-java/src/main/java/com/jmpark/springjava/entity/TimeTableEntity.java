@@ -17,7 +17,7 @@ import javax.persistence.IdClass;
 @IdClass(AreaId.class)
 public class TimeTableEntity extends BaseTimeEntity {
     @Id
-    String areaId = "";
+    Integer areaId = 0;
     @Id
     String type = "";
 
