@@ -1,1 +1,3 @@
 *.msi
+nestjs/.env
+nestjs/.env.local
