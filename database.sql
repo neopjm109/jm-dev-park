@@ -1,5 +1,7 @@
 create database if not exists seoul_parking;
 
+use seoul_parking;
+
 -- 기초코드
 create table if not exists `base_code` (
     `code`          VARCHAR(8)  PRIMARY KEY,
@@ -59,35 +61,38 @@ create table if not exists `parking_area` (
     `management_id` INT             COMMENT '관리기관',
     `latitude`      DECIMAL(12, 8)  COMMENT '위도',
     `longitude`     DECIMAL(12, 8)  COMMENT '경도',
-    'last_updated'  VARCHAR(10)     COMMENT '데이터 기준일자'
+    `last_updated`  VARCHAR(10)     COMMENT '데이터 기준일자'
 );
 
 -- 주소
 create table if not exists `address` (
-    `area_id`       INT         PRIMARY KEY     COMMENT '주차장 ID',
-    `type`          VARCHAR(8)  PRIMARY KEY     COMMENT '기초코드. 주소 타입. 도로명, 지번',
+    `area_id`       INT         COMMENT '주차장 ID',
+    `type`          VARCHAR(8)  COMMENT '기초코드. 주소 타입. 도로명, 지번',
     `created_at`    DATETIME    DEFAULT now(),
     `updated_at`    DATETIME,
     `address`       VARCHAR(4)  COMMENT '주소'
 );
+alter table `address` add primary key (`area_id`, `type`);
 
 -- 운영 시간
 create table if not exists `time_table` (
-    `area_id`       INT         PRIMARY KEY     COMMENT '주차장 ID',
-    `type`          VARCHAR(8)  PRIMARY KEY     COMMENT '기초코드. 타임테이블 타입. 평일,토요일,공휴일',
+    `area_id`       INT         COMMENT '주차장 ID',
+    `type`          VARCHAR(8)  COMMENT '기초코드. 타임테이블 타입. 평일,토요일,공휴일',
     `created_at`    DATETIME    DEFAULT now(),
     `updated_at`    DATETIME,
     `open_at`       VARCHAR(4)  COMMENT '운영 시작',
     `close_at`      VARCHAR(4)  COMMENT '운영 종료'
 );
+alter table `time_table` add primary key (`area_id`, `type`);
 
 -- 결제 방법
 create table if not exists `pay_method` (
-    `area_id`       INT         PRIMARY KEY     COMMENT '주차장 ID',
-    `type`          VARCHAR(8)  PRIMARY KEY     COMMENT '기초코드. 결제 타입. 현금,카드,무통장,지로',
+    `area_id`       INT         COMMENT '주차장 ID',
+    `type`          VARCHAR(8)  COMMENT '기초코드. 결제 타입. 현금,카드,무통장,지로',
     `created_at`    DATETIME    DEFAULT now(),
     `updated_at`    DATETIME
 );
+alter table `pay_method` add primary key (`area_id`, `type`);
 
 
 -- 구매 이용권
@@ -103,7 +108,7 @@ create table if not exists `ticket` (
     `status`        VARCHAR(8)  COMMENT '기초코드. 상태',
     `pay_method`    VARCHAR(8)  COMMENT '기초코드. 결제 타입. 현금,카드,무통장,지로',
     `pay_date`      VARCHAR(14) COMMENT '결제일',
-    `card_code`     VARCHAR(8)  COMMENT '카드 결제시, 카드사 코드'
+    `card_code`     VARCHAR(8)  COMMENT '카드 결제시, 카드사 코드',
     `card_number`   VARCHAR(16) COMMENT '카드 결제시, 카드 번호'
 );
 
