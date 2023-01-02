@@ -9,6 +9,7 @@
 - spring-java : Spring Java API 프로젝트
 - spring-kotlin : Spring kotlin API 프로젝트
 - web : www.jmpark.dev 소스 코드
+- app : flutter
 
 ## API 서버에 대해서
 - MariaDB를 이용하며 ORM,MVC 패턴으로 개발된다.
