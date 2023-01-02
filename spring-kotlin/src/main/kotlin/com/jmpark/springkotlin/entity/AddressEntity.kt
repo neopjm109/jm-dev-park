@@ -8,7 +8,7 @@ import javax.persistence.IdClass
 @IdClass(AreaId::class)
 data class AddressEntity (
     @Id
-    var areaId: String = "",
+    val areaId: Int = 0,
     @Id
     var type: String = "",
 
