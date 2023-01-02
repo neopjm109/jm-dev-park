@@ -112,7 +112,7 @@ create table if not exists `reservation` (
     `id`            VARCHAR(64) PRIMARY KEY,    -- uuid
     `created_at`    DATETIME    DEFAULT now(),
     `updated_at`    DATETIME,
-    `ticket_id`     INT,
+    `ticket_id`     VARCHAR(64),
     `start_at`      DATETIME,
     `end_at`        DATETIME
 );
