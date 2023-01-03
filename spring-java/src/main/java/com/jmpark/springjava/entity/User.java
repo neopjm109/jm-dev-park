@@ -6,8 +6,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -15,11 +13,13 @@ import javax.persistence.Id;
 @Getter
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class ManagementEntity extends BaseTimeEntity {
+public class User extends BaseTimeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id = 0;
+    String id = "";
 
+    String loginId = null;
+    String loginPwd = null;
+    String status = null;
+    String role = null;
     String name = null;
-    String tel = null;
 }

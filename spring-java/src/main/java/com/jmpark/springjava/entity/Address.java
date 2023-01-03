@@ -7,19 +7,19 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 
 @Entity
 @RequiredArgsConstructor
 @Getter
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class UserEntity extends BaseTimeEntity {
+@IdClass(AreaId.class)
+public class Address extends BaseTimeEntity {
     @Id
-    String id = "";
+    Integer areaId = 0;
+    @Id
+    String type = "";
 
-    String loginId = null;
-    String loginPwd = null;
-    String status = null;
-    String role = null;
-    String name = null;
+    String address = null;
 }

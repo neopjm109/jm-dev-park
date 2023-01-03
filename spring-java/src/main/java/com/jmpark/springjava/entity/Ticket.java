@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Getter
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class TicketEntity extends BaseTimeEntity {
+public class Ticket extends BaseTimeEntity {
     @Id
     String id = "";
 

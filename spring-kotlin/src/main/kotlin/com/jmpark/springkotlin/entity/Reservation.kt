@@ -5,7 +5,7 @@ import javax.persistence.Entity
 import javax.persistence.Id
 
 @Entity
-data class ReservationEntity (
+data class Reservation (
     @Id
     val id : String = "",
 

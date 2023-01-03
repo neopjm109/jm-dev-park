@@ -7,18 +7,18 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
 
 @Entity
 @RequiredArgsConstructor
 @Getter
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class ReservationEntity extends BaseTimeEntity {
+public class BaseCode extends BaseTimeEntity {
     @Id
-    String id = "";
+    String code = "";
 
-    String ticketId = null;
-    LocalDateTime startAt = null;
-    LocalDateTime endAt = null;
+    String data1 = null;
+    String data2 = null;
+    String data3 = null;
+    String data4 = null;
 }

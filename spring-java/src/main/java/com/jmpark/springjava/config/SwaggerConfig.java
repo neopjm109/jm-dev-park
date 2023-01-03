@@ -26,7 +26,7 @@ public class SwaggerConfig {
                 .securitySchemes(List.of(apiKey()))
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.jmpark.springjava.config.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.jmpark.springjava.controller"))
 //                .paths(PathSelectors.ant("/api/**"))
                 .paths(PathSelectors.any())
                 .build();

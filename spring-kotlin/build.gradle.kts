@@ -28,7 +28,7 @@ dependencies {
 
     implementation("io.springfox:springfox-boot-starter:3.0.0")
 
-    implementation("com.querydsl:querydsl-jpa:5.0.0")
+    api("com.querydsl:querydsl-jpa:5.0.0")
     kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
 }
 
@@ -41,8 +41,4 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-kotlin.sourceSets.main {
-    kotlin.srcDir("$buildDir/generated/kapt/main")
 }

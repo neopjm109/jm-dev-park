@@ -4,7 +4,7 @@ import javax.persistence.Entity
 import javax.persistence.Id
 
 @Entity
-data class BaseCodeEntity (
+data class BaseCode (
     @Id
     val code : String = "",
 

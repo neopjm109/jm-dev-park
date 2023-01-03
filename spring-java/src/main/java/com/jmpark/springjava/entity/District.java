@@ -6,20 +6,19 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 
 @Entity
 @RequiredArgsConstructor
 @Getter
 @ToString
 @EqualsAndHashCode(callSuper = false)
-@IdClass(AreaId.class)
-public class AddressEntity extends BaseTimeEntity {
+public class District extends BaseTimeEntity {
     @Id
-    Integer areaId = 0;
-    @Id
-    String type = "";
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Integer id = 0;
 
-    String address = null;
+    String name = null;
 }

@@ -7,7 +7,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class ParkingAreaEntity (
+data class ParkingArea (
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id : Int = 0,

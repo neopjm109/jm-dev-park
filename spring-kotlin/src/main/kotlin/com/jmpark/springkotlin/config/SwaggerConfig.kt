@@ -22,7 +22,7 @@ class SwaggerConfig {
             .securitySchemes(java.util.List.of<SecurityScheme>(apiKey()))
             .apiInfo(apiInfo())
             .select()
-            .apis(RequestHandlerSelectors.basePackage("com.jmpark.springkotlin.config.controller"))
+            .apis(RequestHandlerSelectors.basePackage("com.jmpark.springkotlin.controller"))
             .paths(PathSelectors.any())
             .build()
     }

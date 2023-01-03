@@ -15,7 +15,7 @@ import javax.persistence.IdClass;
 @ToString
 @EqualsAndHashCode(callSuper = false)
 @IdClass(AreaId.class)
-public class PayMethodEntity extends BaseTimeEntity {
+public class PayMethod extends BaseTimeEntity {
     @Id
     Integer areaId = 0;
     @Id

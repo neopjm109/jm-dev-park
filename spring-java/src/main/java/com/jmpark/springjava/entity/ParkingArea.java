@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @Getter
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class ParkingAreaEntity extends BaseTimeEntity {
+public class ParkingArea extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id = 0;

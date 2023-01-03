@@ -6,7 +6,7 @@ import javax.persistence.IdClass
 
 @Entity
 @IdClass(AreaId::class)
-data class AddressEntity (
+data class Address (
     @Id
     val areaId: Int = 0,
     @Id

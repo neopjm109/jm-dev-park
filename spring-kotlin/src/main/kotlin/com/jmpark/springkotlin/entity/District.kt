@@ -6,11 +6,10 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class ManagementEntity (
+data class District (
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id : Int = 0,
 
-    var name : String? = null,
-    var tel : String? = null
+    var name : String? = null
 ) : BaseTimeEntity()
