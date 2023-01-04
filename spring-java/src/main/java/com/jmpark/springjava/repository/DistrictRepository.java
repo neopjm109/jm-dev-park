@@ -13,17 +13,19 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class TestRepository extends PageableRepository {
+public class DistrictRepository extends PageableRepository<District, Integer> {
     private final JPAQueryFactory jpaQueryFactory;
 
-    public List<District> findAllDistrict() {
+    @Override
+    public List<District> all() {
         QDistrict district = QDistrict.district;
         return jpaQueryFactory.selectFrom(district)
                 .orderBy(district.id.desc())
                 .fetch();
     }
 
-    public Page<District> pageDistrict(Pageable pageable) {
+    @Override
+    public Page<District> page(Pageable pageable) {
         QDistrict district = QDistrict.district;
         JPAQuery<District> query = jpaQueryFactory.selectFrom(district)
                 .orderBy(district.id.desc());
