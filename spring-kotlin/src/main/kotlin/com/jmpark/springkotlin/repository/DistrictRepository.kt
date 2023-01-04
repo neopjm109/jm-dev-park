@@ -9,18 +9,18 @@ import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Repository
 
 @Repository
-class TestRepository (
+class DistrictRepository (
     private val jpaQueryFactory: JPAQueryFactory
-) : PageableRepository() {
+) : PageableRepository<District, Int>() {
 
-    fun findAllDistrict(): List<District> {
+    override fun all(): List<District> {
         val district: QDistrict = QDistrict.district
         return jpaQueryFactory.selectFrom(district)
             .orderBy(district.id.desc())
             .fetch()
     }
 
-    fun pageDistrict(pageable: Pageable): Page<District> {
+    override fun page(pageable: Pageable): Page<District> {
         val district: QDistrict = QDistrict.district
         val query: JPAQuery<District> = jpaQueryFactory.selectFrom(district)
             .orderBy(district.id.desc())
