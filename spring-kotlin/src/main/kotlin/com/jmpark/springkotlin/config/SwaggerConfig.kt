@@ -18,8 +18,8 @@ class SwaggerConfig {
     @Bean
     fun api(): Docket? {
         return Docket(DocumentationType.SWAGGER_2)
-            .securityContexts(java.util.List.of(securityContext()))
-            .securitySchemes(java.util.List.of<SecurityScheme>(apiKey()))
+            .securityContexts(listOf(securityContext()))
+            .securitySchemes(listOf<SecurityScheme>(apiKey()))
             .apiInfo(apiInfo())
             .select()
             .apis(RequestHandlerSelectors.basePackage("com.jmpark.springkotlin.controller"))
