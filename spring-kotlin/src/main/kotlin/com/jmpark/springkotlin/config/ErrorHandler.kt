@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 class ErrorHandler {
     @ExceptionHandler(ErrorException::class)
     fun exception(exception: ErrorException): ResponseDto {
-        return ResponseDto.generate(exception.code, "error", false)
+        return ResponseDto(exception.code, "error", false)
     }
 }

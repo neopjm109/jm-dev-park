@@ -14,9 +14,9 @@ class TestController (
     private val testService: TestService
 ) {
     @GetMapping("/list")
-    fun listDistrict() : ResponseDto = ResponseDto.generate("0000", "", testService.findAllDistrict())
+    fun listDistrict() : ResponseDto = ResponseDto("0000", "", testService.findAllDistrict())
 
     @GetMapping("/page/{page}/{size}")
     fun pageDistrict(@PathVariable page: Int = 0, @PathVariable size: Int = 10) : ResponseDto =
-        ResponseDto.generate("0000", "", testService.pageDistrict(page, size))
+        ResponseDto("0000", "", testService.pageDistrict(page, size))
 }
